@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/layout}">
+
+<!--이 곳에 link 태그로 css파일 연결하는 코드 작성-->
+<th:block layout:fragment="content_css">
+  <link rel="stylesheet" href="/css/sales_info.css">
+</th:block>
+
+<!--아래 block에 html 코드 작성-->
+<th:block layout:fragment="content">
+  <div>
+    <form action="/car/reg-sales" method="post" id="regSales">
+      <div>
+        <p>구매자명</p>
+        <input type="text" name="ownerName">
+      </div>
+      <div>
+        <p>색상</p>
+        <select name="color" id="">
+          <option value="">선택</option>
+          <option value="화이트">화이트</option>
+          <option value="블랙">블랙</option>
+          <option value="레드">레드</option>
+        </select>
+      </div>
+      <div>
+        <p>모델</p>
+        <select name="modelNum" id="">
+          <option value="">선택</option>
+          <option th:value="${product.modelNum}" th:each="product : ${productList}" th:text="${product.productCom}"></option>
+        </select>
+      </div>
+      <div>
+        <p>연락처</p>
+        <input type="text" name="ownerTel">
+      </div>
+      <p class="red" id="tel-p"></p>
+      <button type="button" onclick="regSales()">등록</button>
+    </form>
+  </div>
+</th:block>
+
+<!--이 곳에 script 태그로 js파일 연결하는 코드 작성-->
+<th:block layout:fragment="content_js">
+  <script src="/js/sales_info.js"></script>
+</th:block>
+</html>

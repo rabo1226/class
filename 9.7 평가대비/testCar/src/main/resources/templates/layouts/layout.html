@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/common.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/header.css">
+  <th:block layout:fragment="content_css"></th:block>
+</head>
+<body>
+  <div class="total-container">
+    <div class="header">
+      <th:block th:replace="~{layouts/header::headerFragment}"></th:block>
+    </div>
+    <div class="content">
+      <th:block layout:fragment="content"></th:block>
+    </div>
+  </div>
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+  <th:block layout:fragment="content_js"></th:block>
+</body>
+</html>

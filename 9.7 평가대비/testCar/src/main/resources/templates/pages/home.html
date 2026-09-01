@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{/layouts/layout}">
+
+<!--이 곳에 link 태그로 css파일 연결하는 코드 작성-->
+<th:block layout:fragment="content_css">
+  <link rel="stylesheet" href="/css/home.css">
+</th:block>
+
+<!--아래 block에 html 코드 작성-->
+<th:block layout:fragment="content">
+  <h1>차량 판매 정보 시스템</h1>
+</th:block>
+
+<!--이 곳에 script 태그로 js파일 연결하는 코드 작성-->
+<th:block layout:fragment="content_js">
+  <script src="/js/home.js"></script>
+</th:block>
+</html>

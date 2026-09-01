@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 해당 파일에 모든 쿼리문을 작성 -->
+<!-- namespace에는 xml파일과 연결할 Mapper interface 파일명을 패키지를 포함하여 적어주세요 -->
+<mapper namespace="com.green.testCar.mapper.CarMapper">
+  <!--자동차정보 mapper-->
+  <resultMap id="car" type="com.green.testCar.dto.CarDTO">
+    <id column="MODEL_NUM" property="modelNum"/>
+    <result column="MODEL_NAME" property="modelName"/>
+    <result column="CAR_PRICE" property="modelName"/>
+    <result column="PRODUCT_COM" property="productCom"/>
+  </resultMap>
+
+  <resultMap id="sales" type="com.green.testCar.dto.SalesDTO">
+    <id column="SALES_NUM" property="salesNum"/>
+    <result column="OWNER_NAME" property="ownerName"/>
+    <result column="OWNER_TEL" property="ownerTel"/>
+    <result column="COLOR" property="color"/>
+    <result column="SALES_DATE" property="salesDate"/>
+    <result column="MODEL_NUM" property="modelNum"/>
+  </resultMap>
+
+  <!--제조사 목록-->
+  <select id="productList" resultMap="car">
+    SELECT
+      MODEL_NUM
+      , PRODUCT_COM
+    FROM CAR_INFO
+    GROUP BY PRODUCT_COM
+  </select>
+
+  <!--차량 목록 조회 쿼리 //등록일 기준 정렬 필요!(SALES 기준!!!)-->
+  <select id="selectCarList" resultMap="car">
+    SELECT
+      MODEL_NUM
+      , MODEL_NAME
+      , CAR_PRICE
+      , PRODUCT_COM
+    FROM CAR_INFO
+  </select>
+
+  <!--차량등록 쿼리-->
+  <insert id="regCar">
+    INSERT INTO CAR_INFO(
+      MODEL_NAME
+      , CAR_PRICE
+      , PRODUCT_COM
+    ) VALUES(
+      #{modelName}
+      , #{carPrice}
+      , #{productCom}
+    )
+  </insert>
+
+  <insert id="regSales">
+    INSERT INTO SALES_INFO(
+      OWNER_NAME
+      , OWNER_TEL
+      , COLOR
+      , MODEL_NUM
+    ) VALUES(
+      #{ownerName}
+      , #{ownerTel}
+      , #{color}
+      , #{modelNum}
+    )
+  </insert>
+
+
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+.menu{
+  margin-bottom: 10px;
+  border-bottom: 2px solid rgb(203, 41, 87);
+}
+
+ul{
+  display: flex;
+  font-size: 1.4rem;
+  justify-content: space-around;
+  /* border: 5px solid green;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px; */
+}
+
+li{
+  margin: 15px;
+}

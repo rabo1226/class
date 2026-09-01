@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/layout}">
+  <!--이 곳에 link 태그로 css파일 연결하는 코드 작성-->
+  <th:block layout:fragment="content_css">
+    <link rel="stylesheet" href="/css/car_info.css">
+  </th:block>
+  
+<!--아래 block에 html 코드 작성-->
+<th:block layout:fragment="content">
+  <div class="total-container">
+    <form action="/car/reg-car" method="post" id="reg-car">
+      <div class="reg-div">
+        <p>차량 등록</p>
+        <div>
+          <p>제조사</p>
+          <select name="productCom" id="">
+            <option value="" selected>선택</option>
+            <option th:value="${carProduct.productCom}" th:each="carProduct : ${productList}" th:text="${carProduct.productCom}"></option>
+          </select>
+        </div>
+        <div>
+          <p>모델명</p>
+          <input type="text" name="modelName">
+        </div>
+        <div>
+          <p>차량가격</p>
+          <input type="text" name="carPrice">
+        </div>
+        <p class="red" id="invaild-p"></p>
+      </div>
+      <div><button type="button" onclick="regCar()">등록</button></div>
+    </form>
+    <div class="reg-list-div">
+      <p>등록된 차량 목록</p>
+      <table>
+        <colgroup>
+          <col width="25%">
+          <col width="25%">
+          <col width="25%">
+          <col width="25%">
+        </colgroup>
+        <thead>
+          <tr>
+            <td>No</td>
+            <td>모델번호</td>
+            <td>모델명</td>
+            <td>제조사</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="carProduct, state : ${carList}">
+            <td th:text="${#lists.size(carList) - state.index}"></td>
+            <td th:text="${carProduct.modelNum}"></td>
+            <td th:text="${carProduct.modelName}"></td>
+            <td th:text="${carProduct.productCom}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</th:block>
+
+<!--이 곳에 script 태그로 js파일 연결하는 코드 작성-->
+<th:block layout:fragment="content_js">
+  <script src="/js/car_info.js"></script>
+</th:block>
+</html>

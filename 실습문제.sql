@@ -283,41 +283,193 @@ ON O.PROD_ID = P.PROD_ID;
 ##----------------------------------------------------------------------------------------------------------------##
 
 #D-1. PRODUCT 전체의 정가 합계, 평균(소수 2자리 반올림), 최고가, 최저가를 한 번에 조회.
+SELECT
+	SUM(PRICE) 정가
+	#, AVG(NVL(PRICE, 0), 2) 평균
+	, MAX(PRICE) 최고가
+	, MIN(PRICE) 최저가
+	, ROUND(AVG(NVL(PRICE, 0)), 2) 평균
+FROM product;
+
 
 #D-2. 카테고리가 '전자' 인 상품의 평균 정가를 조회.
+SELECT
+	AVG(NVL(PRICE, 0)) '평균 정가'
+FROM product
+WHERE CATEGORY = '전자';
 
 #D-3. (개념) COUNT(PHONE) 가 COUNT(*) 보다 작은 이유를 설명하고, "가입한 회원 수"를 셀 때 COUNT() 안에 어떤 컬럼을 쓰는 게 안전한지 답하라.
+#PHONE컬럼에 존재하는 NULL값의 존재로 조회 데이터가 작게 조회된다. 
+#COUNT(MEM_ID)
 
 #D-4. 아래 쿼리가 "가장 비싼 상품의 이름"을 주지 못하는 이유는?
-#SELECT PROD_NAME, MAX(PRICE) FROM PRODUCT;
+SELECT PROD_NAME, MAX(PRICE) 
+FROM product;
+#집계함수와 단일행함수를 함께 조회해서 PROD_NAME은 1행의 데이터를 조회한 결과가 나온 것이다.
 
 #D-6. 전체 상품 수(12개)를 분모로 하는 할인율 평균을 소수 2자리 반올림으로 조회. (NULL은 0으로 취급)
+SELECT
+ ROUND((COUNT(PROD_ID) / NVL(DISCOUNT_RATE, 0)), 2) AS '할인율 평균'
+ , COUNT(PROD_ID)
+ , AVG(NVL(DISCOUNT_RATE, 0))
+FROM product;
+
+SELECT
+	ROUND(AVG(NVL(DISCOUNT_RATE, 0)), 2) AS '할인율 평균'
+FROM product;
 
 #D-7. ORDERS에서 취소되지 않은 주문의 건수와 사용포인트(USED_POINT) 합계를 조회.
+SELECT
+	COUNT(ORDER_ID)
+	, SUM(USED_POINT)
+FROM orders
+WHERE CANCEL_YN = 'N';
 
 #E-1. 카테고리별 상품 수, 평균 정가, 최고 정가를 조회.
+SELECT
+	CATEGORY
+	, COUNT(PROD_ID)
+	, AVG(NVL(PRICE, 0))
+	, MAX(PRICE)
+FROM product
+GROUP BY CATEGORY;
 
 #E-2. 회원 등급별 회원 수와 평균 포인트를 조회.
+SELECT
+	GRADE
+	, COUNT(MEM_ID)
+	, AVG(NVL(POINT, 0))
+FROM member
+GROUP BY GRADE;
 
 #E-3. 성별·등급별 회원 수를 조회. (GROUP BY 컬럼 2개)
+SELECT
+	GENDER AS 성별
+	, GRADE AS 등급
+	, COUNT(MEM_ID)
+FROM member
+GROUP BY GENDER, GRADE;
 
 #E-4. 도시별 회원 수를 조회하되, 회원이 2명 이상인 도시만.
+SELECT
+	CITY
+	, COUNT(MEM_ID)
+FROM member
+GROUP BY CITY
+HAVING COUNT(MEM_ID) >= 2;
 
 #E-5. 카테고리별 (최고 정가 − 최저 정가)가 50000 이상인 카테고리와 그 격차만 조회.
+SELECT
+	CATEGORY
+	, PRICE
+FROM product
+GROUP BY CATEGORY
+HAVING (MAX(PRICE) - MIN(PRICE)) >= 50000;
 
 #E-6. (응용) ORDERS와 PRODUCT를 조인해 카테고리별 총 주문수량과 총 주문금액(정가×수량)을 조회.
 #취소된 주문(CANCEL_YN='Y')은 제외하고, 총 주문금액이 200000 이상인 카테고리만, 총 주문금액 내림차순.
+SELECT
+	CATEGORY
+	, COUNT(ORDER_ID)
+	, SUM(QTY)
+	, SUM(PRICE *  QTY) AS '총 주문금액'
+FROM ORDERS O
+INNER JOIN product P
+ON O.PROD_ID = P.PROD_ID
+WHERE CANCEL_YN != 'Y'
+GROUP BY CATEGORY
+HAVING SUM(PRICE * QTY) >= 200000
+ORDER BY '총 주문금액' DESC;
 
 #E-7. (응용) ORDERS와 MEMBER를 조인해 회원별 이름과 주문 건수(취소 포함 전체)를 조회.
 #주문을 3건 이상 한 회원만, 주문 건수 내림차순.
+SELECT
+	MEM_NAME
+ 	, COUNT(O.ORDER_ID)
+FROM orders O
+INNER JOIN member M
+ON O.MEM_ID = M.MEM_ID
+GROUP BY M.MEM_ID
+HAVING COUNT(O.ORDER_ID) >= 3
+ORDER BY COUNT(O.ORDER_ID) DESC;
+
 
 #F-1. MEMBER · ORDERS · PRODUCT를 조인해 주문번호, 회원명, 상품명, 카테고리, 수량, 주문금액(정가×수량)을 조회. 취소 주문 제외, 주문번호 순.
+SELECT
+	ORDER_ID AS 주문번호
+	, MEM_NAME AS 회원명
+	, PROD_NAME AS 상품명
+	, CATEGORY AS 카테고리
+	, QTY AS 수량
+	, (PRICE * QTY) AS 주문금액
+FROM member M
+INNER JOIN orders O
+ON M.MEM_ID = O.MEM_ID
+INNER JOIN PRODUCT P
+ON O.PROD_ID = P.PROD_ID
+WHERE CANCEL_YN != 'Y'
+ORDER BY ORDER_ID;
+
+#오라클문법
+SELECT
+FORM member M, orders O, product P
+WHERE M.MEM_ID = O.MEM_ID
+AND O.PROD_ID = P.PROD_ID;
+
 
 #F-2. 회원별 이름·등급·총 결제금액(정가×수량 합, 취소 제외)을 조회. 결제 이력이 있는 회원만, 총 결제금액 내림차순.
+SELECT
+	MEM_NAME
+	, GRADE
+	, SUM(PRICE*QTY)
+FROM member M
+INNER JOIN orders O
+ON M.MEM_ID = O.MEM_ID
+INNER JOIN PRODUCT P
+ON O.PROD_ID = P.PROD_ID
+WHERE CANCEL_YN = 'N'
+GROUP BY M.MEM_ID
+ORDER BY SUM(PRICE*QTY) DESC;
+
 
 #F-3. F-2 결과에 등급별 적립률(VIP 3% / GOLD 2% / SILVER 1% / BRONZE 0.5%)을 적용한 적립예정포인트(반올림)를 추가로 조회.
+SELECT
+	MEM_NAME
+	, GRADE
+	, ROUND(SUM(PRICE*QTY) * 
+		CASE GRADE
+		WHEN 'VIP' THEN 0.03
+		WHEN 'GOLD' THEN 0.02
+		WHEN 'SILVER' THEN 0.01
+		ELSE 0.005
+		END) AS '적립 예상금액'
+FROM member M
+INNER JOIN orders O
+ON M.MEM_ID = O.MEM_ID
+INNER JOIN PRODUCT P
+ON O.PROD_ID = P.PROD_ID
+WHERE CANCEL_YN != 'Y'
+GROUP BY M.MEM_ID
+ORDER BY SUM(PRICE*QTY) DESC;
 
 #F-4. 주문 이력이 아예 없거나 모든 주문이 취소된 회원의 이름을 조회.
+SELECT
+	MEM_NAME
+	, CANCEL_YN
+FROM member M
+INNER JOIN orders O
+ON M.MEM_ID = O.MEM_ID
+GROUP BY M.MEM_ID
+HAVING CANCEL_YN = 'N';
+
+SELECT
+	MEM_NAME
+FROM member
+WHERE MEM_ID NOT IN (SELECT DISTINCT MEM_ID FROM orders);  #서브쿼리
+
+SELECT
+	DISTINCT	MEM_ID
+FROM orders;
 
 #F-5. PRODUCT를 기준으로 ORDERS를 LEFT JOIN 해서 상품명, 총 판매수량, 총 매출을 조회. 한 번도 안 팔린 상품도 0으로 표시. (취소 주문 제외)
 
