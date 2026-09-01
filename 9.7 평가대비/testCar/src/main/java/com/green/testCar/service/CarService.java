@@ -31,4 +31,10 @@ public class CarService {
   public void regSales(SalesDTO salesDTO){
     carMapper.regSales(salesDTO);
   }
+
+  //판매목록 조회 기능
+  public List<SalesDTO> selectSalesList(){
+    List<SalesDTO> salesList = carMapper.selectSalesList();
+    return salesList;
+  }
 }

@@ -5,14 +5,45 @@
 
 <!--이 곳에 link 태그로 css파일 연결하는 코드 작성-->
 <th:block layout:fragment="content_css">
+  <link rel="stylesheet" href="/css/sales_list.css">
 </th:block>
 
 <!--아래 block에 html 코드 작성-->
 <th:block layout:fragment="content">
-  
+  <div class="sales-div">
+    <table>
+      <thead>
+        <tr>
+          <td rowspan="2">No</td>
+          <td colspan="4">구매자정보</td>
+          <td colspan="2">차량정보</td>
+        </tr>
+        <tr>
+          <td>구매자명</td>
+          <td>연락처</td>
+          <td>구매일</td>
+          <td>색상</td>
+          <td>모델명</td>
+          <td>가격</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="sale, state : ${salesList}">
+          <td th:text="${#lists.size(salesList) - state.index}"></td>
+          <td th:text="${sale.ownerName}"></td>
+          <td th:text="${sale.ownerTel != '' ? sale.ownerTel : '-'}"></td>
+          <td th:text="${#temporals.format(sale.salesDate, 'yyyy.MM.dd HH:MM')}"></td>
+          <td th:text="${sale.color}"></td>
+          <td th:text="${sale.carDTO.modelName}"></td>
+          <td th:text="${sale.carDTO.carPrice}"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </th:block>
 
 <!--이 곳에 script 태그로 js파일 연결하는 코드 작성-->
 <th:block layout:fragment="content_js">
+  <script src="/js/sales_list.js"></script>
 </th:block>
 </html>

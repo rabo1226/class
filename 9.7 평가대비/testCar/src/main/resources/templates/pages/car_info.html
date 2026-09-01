@@ -9,10 +9,10 @@
   
 <!--아래 block에 html 코드 작성-->
 <th:block layout:fragment="content">
-  <div class="total-container">
+  <div class="car-info-div">
     <form action="/car/reg-car" method="post" id="reg-car">
       <div class="reg-div">
-        <p>차량 등록</p>
+        <h2>차량 등록</h2>
         <div>
           <p>제조사</p>
           <select name="productCom" id="">
@@ -29,11 +29,11 @@
           <input type="text" name="carPrice">
         </div>
         <p class="red" id="invaild-p"></p>
+        <div><button type="button" onclick="regCar()">등록</button></div>
       </div>
-      <div><button type="button" onclick="regCar()">등록</button></div>
     </form>
     <div class="reg-list-div">
-      <p>등록된 차량 목록</p>
+      <h2>등록된 차량 목록</h2>
       <table>
         <colgroup>
           <col width="25%">

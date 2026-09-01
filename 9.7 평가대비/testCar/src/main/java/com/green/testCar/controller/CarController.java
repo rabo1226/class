@@ -58,7 +58,15 @@ public class CarController {
     //판매등록 정보
     System.out.println(salesDTO);
     carService.regSales(salesDTO);
-    return "pages/sales_info";
+    return "redirect:/car/sales-list";
+  }
+
+  @GetMapping("/sales-list")
+  public String salesList(Model model){
+    List<SalesDTO> salesList = carService.selectSalesList();
+    System.out.println(salesList);
+    model.addAttribute("salesList", salesList);
+    return "/pages/sales_list";
   }
 
 }

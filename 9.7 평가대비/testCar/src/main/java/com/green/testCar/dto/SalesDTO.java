@@ -13,4 +13,5 @@ public class SalesDTO {
   private String color;
   private LocalDateTime salesDate;
   private Long modelNum;
+  private CarDTO carDTO;
 }

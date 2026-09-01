@@ -18,4 +18,7 @@ public interface CarMapper {
 
   //판매정보 등록 쿼리
   void regSales(SalesDTO salesDTO);
+
+  //판매목록 조회 쿼리
+  List<SalesDTO> selectSalesList();
 }

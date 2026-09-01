@@ -1,0 +1,14 @@
+.car-info-div{
+  margin: 100px auto;
+  padding: 0px 20px;
+}
+
+.car-info-div > form > div,
+.car-info-div > div{
+  margin-bottom: 20px;
+  border: 1px solid lightgreen;
+}
+
+h2{
+  color: rgb(203, 41, 87);
+}

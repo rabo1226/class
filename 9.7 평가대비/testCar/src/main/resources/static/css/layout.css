@@ -1,5 +1,6 @@
 body{
   background-color: rgba(0, 0, 0, 0.253);
+  /* background-color: darkslategrey; */
 }
 
 .total-container{
@@ -12,11 +13,12 @@ body{
 }
 
 .header{
-  /* border: 1px solid yellow; */
+  /* border: 3px solid greenyellow; */
   height: 7%;
+  border-bottom: 2px solid rgb(203, 41, 87);
 }
 
 .content{
-  /* border: 1px soild red; */
   height: 93%;
+  border: 1px solid yellow;
 }
