@@ -3,12 +3,38 @@
   padding: 0px 20px;
 }
 
-.car-info-div > form > div,
-.car-info-div > div{
-  margin-bottom: 20px;
-  border: 1px solid lightgreen;
-}
-
 h2{
   color: rgb(203, 41, 87);
+  margin-bottom: 15px;
+}
+
+.reg-div{
+  border: 2px solid rgb(203, 41, 87);
+  border-radius: 10px;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.reg-form{
+  border: 2px solid violet;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.reg-form > div{
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  border: 1px solid yellow;
+}
+.reg-form p{width: 30%;}
+
+.reg-form button{
+  width: 50%;
+  background-color: wheat;
+}
+
+.reg-form input, .reg-form select{
+  width: 70%;
 }

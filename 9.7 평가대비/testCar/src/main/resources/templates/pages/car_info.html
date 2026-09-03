@@ -13,23 +13,27 @@
     <form action="/car/reg-car" method="post" id="reg-car">
       <div class="reg-div">
         <h2>차량 등록</h2>
-        <div>
-          <p>제조사</p>
-          <select name="productCom" id="">
-            <option value="" selected>선택</option>
-            <option th:value="${carProduct.productCom}" th:each="carProduct : ${productList}" th:text="${carProduct.productCom}"></option>
-          </select>
-        </div>
-        <div>
-          <p>모델명</p>
-          <input type="text" name="modelName">
-        </div>
-        <div>
-          <p>차량가격</p>
-          <input type="text" name="carPrice">
+        <div class="reg-form">
+          <div>
+            <p>제조사</p>
+            <select name="productCom" id="">
+              <option value="" selected>선택</option>
+              <option th:value="${carProduct.productCom}" th:each="carProduct : ${productList}" th:text="${carProduct.productCom}"></option>
+            </select>
+          </div>
+          <div>
+            <p>모델명</p>
+            <input type="text" name="modelName">
+          </div>
+          <div>
+            <p>차량가격</p>
+            <input type="text" name="carPrice">
+          </div>
+          <div>
+            <button type="button" onclick="regCar()">등록</button>
+          </div>
         </div>
         <p class="red" id="invaild-p"></p>
-        <div><button type="button" onclick="regCar()">등록</button></div>
       </div>
     </form>
     <div class="reg-list-div">
