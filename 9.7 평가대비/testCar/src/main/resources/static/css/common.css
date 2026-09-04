@@ -65,12 +65,12 @@
   font-family: 'Paperozi';
 }
 
-a{
+ul > li > a{
     text-decoration: none;
     color: black;
 }
 
-a:hover{
+ul > li > a:hover{
     color: rgb(203, 41, 87);
     cursor: pointer;
 }
@@ -103,7 +103,7 @@ a:hover{
     cursor: pointer;
 }
 .btn:active{
-    background-color: rgb(203, 41, 87);
+    background-color: #EC407A;
 }
 
 
@@ -117,7 +117,7 @@ a:hover{
 
 /* ---------------------- */
 .reg-table > thead > tr > td{
-  background-color: rgb(203, 41, 87);
+  background-color: rgb(90, 90, 90);
   color: white;
   text-align: center;
   padding: 5px 0px;
@@ -127,9 +127,11 @@ a:hover{
 .reg-table > tbody > tr > td{
   text-align: center;
   padding: 4px 0px;
+  color: #333;
 }
 
 .reg-table > tbody > tr:nth-last-child(odd){
-  background-color: rgb(218, 173, 185);
+  background-color: #F5F5F5;
+  border-bottom: 1px solid rgb(238, 238, 238);
 }
 /* https://colorhunt.co/palette/000000cb2957ddddddeeeeee */

@@ -13,7 +13,8 @@ p{
   transform: translate(-50%, -50%);
   /* margin: 250px auto; */
   text-align: center;
-  color: rgb(203, 41, 87);
+  color: white;
+  text-shadow: 2px 2px 15px rgb(203, 41, 87);
   background-color: none;
 }
 .home-img{
@@ -24,6 +25,6 @@ p{
   top: 0px;
   object-fit: cover;
   object-position: center center;
-  opacity: 0.6;
+  opacity: 0.9;
   visibility: visible;
 }

@@ -1,5 +1,5 @@
 body{
-  background-color: rgb(44, 44, 44);
+  background-color: #F7F7F7;
 }
 
 .total-container{
@@ -8,12 +8,17 @@ body{
   height: 650px;
   background-color: rgb(238, 238, 238);
   border-radius: 15px;
-  border: 3px solid rgb(203, 41, 87);
+  border: 3px solid rgb(224, 224, 224);
+  box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
+  overflow: hidden;
 }
 
 .header{
+  background-color: white;
   height: 9%;
-  border-bottom: 2px solid rgb(203, 41, 87);
+  border-bottom: 2px solid rgb(224, 224, 224);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
 
 .content{
