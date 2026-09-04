@@ -1,24 +1,21 @@
 body{
-  background-color: rgba(0, 0, 0, 0.253);
-  /* background-color: darkslategrey; */
+  background-color: rgb(44, 44, 44);
 }
 
 .total-container{
   width: 1000px;
   margin: 50px auto;
   height: 650px;
-  /* border: 3px solid green; */
   background-color: rgb(238, 238, 238);
   border-radius: 15px;
+  border: 3px solid rgb(203, 41, 87);
 }
 
 .header{
-  /* border: 3px solid greenyellow; */
-  height: 7%;
+  height: 9%;
   border-bottom: 2px solid rgb(203, 41, 87);
 }
 
 .content{
-  height: 93%;
-  border: 1px solid yellow;
+  height: 91%;
 }

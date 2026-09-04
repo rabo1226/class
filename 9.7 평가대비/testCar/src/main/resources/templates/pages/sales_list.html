@@ -10,8 +10,8 @@
 
 <!--아래 block에 html 코드 작성-->
 <th:block layout:fragment="content">
-  <div class="sales-div">
-    <table>
+  <div class="sales-div pd">
+    <table class="sales-t reg-table">
       <thead>
         <tr>
           <td rowspan="2">No</td>
@@ -35,7 +35,7 @@
           <td th:text="${#temporals.format(sale.salesDate, 'yyyy.MM.dd HH:MM')}"></td>
           <td th:text="${sale.color}"></td>
           <td th:text="${sale.carDTO.modelName}"></td>
-          <td th:text="${sale.carDTO.carPrice}"></td>
+          <td>[[${sale.carDTO.carPrice}]]원</td>
         </tr>
       </tbody>
     </table>

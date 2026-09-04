@@ -1,6 +1,6 @@
 .car-info-div{
-  margin: 100px auto;
-  padding: 0px 20px;
+  margin: 70px auto;
+  padding: 0px 30px;
 }
 
 h2{
@@ -8,33 +8,46 @@ h2{
   margin-bottom: 15px;
 }
 
-.reg-div{
-  border: 2px solid rgb(203, 41, 87);
-  border-radius: 10px;
-  margin-bottom: 30px;
-  padding: 20px;
-}
-
 .reg-form{
-  border: 2px solid violet;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 20px;
 }
 
-.reg-form > div{
+/* .reg-form > div{
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
-  width: 100%;
-  border: 1px solid yellow;
+} */
+.reg-form > div:nth-child(1),
+.reg-form > div:nth-child(2),
+.reg-form > div:nth-child(3){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 27%;
 }
-.reg-form p{width: 30%;}
 
-.reg-form button{
-  width: 50%;
-  background-color: wheat;
+.reg-form > div:nth-child(4){
+  width: 13%;
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+
+.reg-form p{
+  width: 30%;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 .reg-form input, .reg-form select{
   width: 70%;
+}
+
+.reg-table{
+  width: 100%;
 }

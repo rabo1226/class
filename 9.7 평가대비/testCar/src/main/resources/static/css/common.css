@@ -78,6 +78,58 @@ a:hover{
 .red{
   color: red;
   font-size: 0.7rem;
+  margin: 5px 0px;
 }
 
+/* ----------버튼 디자인 */
+.btn{
+    padding: 6px 0px;
+    font-size: 0.8rem;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    background-color: rgb(204, 79, 114);
+}
+
+.btn-nomal{
+    width: 70%;
+}
+
+.btn-large{
+    width: 100%;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+.btn:active{
+    background-color: rgb(203, 41, 87);
+}
+
+
+/* 공통 여백 */
+.pd{
+    border: 2px solid rgb(203, 41, 87);
+    border-radius: 10px;
+    margin-bottom: 30px;
+    padding: 20px 30px 20px 30px;
+}
+
+/* ---------------------- */
+.reg-table > thead > tr > td{
+  background-color: rgb(203, 41, 87);
+  color: white;
+  text-align: center;
+  padding: 5px 0px;
+  font-size: 1.1rem;
+}
+
+.reg-table > tbody > tr > td{
+  text-align: center;
+  padding: 4px 0px;
+}
+
+.reg-table > tbody > tr:nth-last-child(odd){
+  background-color: rgb(218, 173, 185);
+}
 /* https://colorhunt.co/palette/000000cb2957ddddddeeeeee */

@@ -40,6 +40,7 @@
       , CAR_PRICE
       , PRODUCT_COM
     FROM CAR_INFO
+    ORDER BY MODEL_NUM DESC
   </select>
 
   <!--차량등록 쿼리-->

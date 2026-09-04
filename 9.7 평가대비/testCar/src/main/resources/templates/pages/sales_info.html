@@ -10,7 +10,7 @@
 
 <!--아래 block에 html 코드 작성-->
 <th:block layout:fragment="content">
-  <div>
+  <div class="sales-info-div pd">
     <form action="/car/reg-sales" method="post" id="regSales">
       <div>
         <p>구매자명</p>
@@ -36,8 +36,8 @@
         <p>연락처</p>
         <input type="text" name="ownerTel">
       </div>
-      <p class="red" id="tel-p"></p>
-      <button type="button" onclick="regSales()">등록</button>
+      <p class="red" id="tel-p">&nbsp;</p>
+      <button type="button" onclick="regSales()" class="btn btn-large">등록</button>
     </form>
   </div>
 </th:block>

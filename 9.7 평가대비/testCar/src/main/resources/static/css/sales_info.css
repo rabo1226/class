@@ -1,0 +1,19 @@
+.sales-info-div{
+  margin: 70px auto;
+  padding: 20px 30px;
+  width: 45%;
+}
+
+.sales-info-div div{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin: 8px 0px;
+}
+
+.sales-info-div > form > div > p{
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: rgb(203, 41, 87);
+}

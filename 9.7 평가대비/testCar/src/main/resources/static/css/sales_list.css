@@ -1,0 +1,11 @@
+.sales-div{
+  margin: 70px auto;
+  width: 85%;
+}
+
+.sales-t{
+  width: 100%;
+}
+.sales-t > thead > tr > td{
+  border: 1px solid white;
+}

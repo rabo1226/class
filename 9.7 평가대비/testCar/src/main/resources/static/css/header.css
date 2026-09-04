@@ -1,15 +1,7 @@
-.menu{
-  margin-bottom: 10px;
-  
-}
-
 ul{
   display: flex;
   font-size: 1.4rem;
   justify-content: space-around;
-  /* border: 5px solid green;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px; */
 }
 
 li{
