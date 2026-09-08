@@ -9,3 +9,7 @@
 .sales-t > thead > tr > td{
   border: 1px solid rgba(255,255,255,0.3)
 }
+
+.sales-t > thead > tr:first-child > td:first-child{
+  vertical-align: middle;
+}

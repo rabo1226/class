@@ -16,9 +16,9 @@
         <div class="reg-form">
             <div>
               <p>제조사</p>
-              <select name="productCom" id="">
-                <option value="" selected>선택</option>
-                <option th:value="${carProduct.productCom}" th:each="carProduct : ${productList}" th:text="${carProduct.productCom}"></option>
+              <select name="productCom">
+                <option value="" selected>선택</option>                
+                  <option th:value="${carProduct.productCom}" th:each="carProduct : ${productList}" th:text="${carProduct.productCom}"></option>
               </select>
             </div>
             <div>
