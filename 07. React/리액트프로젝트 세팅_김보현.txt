@@ -1,0 +1,61 @@
+react 프로젝트 생성 명령어 : npm create vite@latest   (프로젝트는 폴더로 만들어짐)
+생성한 프로젝트에 라이브러리 설치 명령어 : npm i
+프로젝트 실행 명령어 :  npm run dev   ->   o + Enter
+프로젝트 재시작 명령어 : r + Enter
+프로젝트 종료 명령어 : q + Enter, Ctrl + c
+
+라이브러리 설치
+npm install axios
+npm install react-router-dom
+npm install dayjs      사용법 : dayjs(날짜데이터).format(날짜형식);
+npm install react-daum-postcode    (script : //t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js)
+npm install @reduxjs/toolk
+it react-redux
+npm install install jwt-decode
+
+
+프로젝트명 : 대문자사용하면 인식못함!
+mpa(html+css+js/muti) / spa(react)
+
+확장자 : ES7+ React/Redux/React-Native snippets 설치~~~~ / rafce 사용 가능
+
+cmd 터미널 -> npm create vite@latest -> y(설치할?) -> project name : (소문자 사용)
+-> Select a framework: React -> Select a variant: JavaScript -> Which linter to use? ESLint
+-> Install with npm and start now? No -> 폴더 생성 확인 = 프로젝트 생성 완료
+-> workspace_react에서 first로 폴더 다시 열기!
+
+react는 index.html만 생성되어 있고, 그 속에서 지웟다 그렸다한당
+
+
+cmd -> npm i 입력 -> node_modules 생성(package-~의 설치 목록을 npm i로 설치 진행 -> node~에서 설치) 
+-> npm run dev -> o 입력 -> 웹브라우저(http://localhost:5173/) 켜진당! / 종료 : Ctrl + c
+-> html = index.html / sre/assets/main.jsx(react 확장자!)
+
+main.jsx
+<APP /> -> 파일명 APP.jsx의 내용을 main.jsx에 그린다!
+
+APP.jsx		
+html+js = jsx(javascript extends)
+
+html
+<table></table>
+<input>
+---------------
+jsx
+무조건 마감태그 필수!
+<input></input>
+
+컴토넌트
+function App() -> Component(컴포넌트)/함수처럼 생겼지만 '대문자' 시작
+App return()의 내용을 main에 그린다!
+
+function App() {
+ js코드
+  return (
+    html코드
+  )
+}
+
+다른 파일의 컴포넌트 사용하기!
+1. export default 컴포너트명
+2. App.jsx에서 컴포넌트 호출
