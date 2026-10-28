@@ -1,5 +1,6 @@
 react 프로젝트 생성 명령어 : npm create vite@latest   (프로젝트는 폴더로 만들어짐)
 생성한 프로젝트에 라이브러리 설치 명령어 : npm i
+ -> index.css 삭제 / App.css(내용 삭제), App.jsx(<>빈 태그 안 내용 삭제</>)
 프로젝트 실행 명령어 :  npm run dev   ->   o + Enter
 프로젝트 재시작 명령어 : r + Enter
 프로젝트 종료 명령어 : q + Enter, Ctrl + c
